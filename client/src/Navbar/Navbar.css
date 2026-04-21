@@ -1,0 +1,120 @@
+.navbar-custom {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(10, 10, 10, 0.92) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 20px;
+}
+
+.navbar-shell {
+  gap: 16px;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.navbar-user {
+  color: #c8a96a;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.nav-link {
+  color: #d3d3d3 !important;
+  border-radius: 999px;
+  padding: 10px 14px !important;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-link.active {
+  color: #111 !important;
+  background: #c8a96a;
+}
+
+.nav-link-auth {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.nav-auth-button {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: #d3d3d3;
+  border-radius: 999px;
+  padding: 10px 14px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.nav-auth-button:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    display: none;
+    width: 100%;
+  }
+
+  .navbar-collapse.is-open {
+    display: block;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .navbar-auth {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 12px;
+    margin-left: 0;
+  }
+
+  .nav-link {
+    text-align: center;
+  }
+
+  .nav-auth-button,
+  .navbar-user {
+    text-align: center;
+  }
+}
