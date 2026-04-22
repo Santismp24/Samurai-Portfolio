@@ -57,6 +57,8 @@ Opcional para email:
 - `SMTP_SECURE`
 - `MAIL_FROM`
 
+Si no configuras SMTP, el backend guardara una preview HTML del correo en `server/mail-previews/` en lugar de enviarlo de verdad.
+
 Ejecutar:
 
 ```bash

@@ -1,6 +1,8 @@
 import fs from 'fs/promises'
 import path from 'path'
 
+let smtpWarningShown = false
+
 function buildReservationEmail({ reservation, heading, intro, ctaLabel, ctaUrl }) {
   const areaLabel = reservation.area === 'barra' ? 'Barra omakase' : 'Salon'
 
@@ -33,6 +35,13 @@ async function deliverWithNodemailer(message) {
   const smtpPass = process.env.SMTP_PASS
 
   if (!smtpHost || !smtpUser || !smtpPass) {
+    if (!smtpWarningShown) {
+      smtpWarningShown = true
+      console.warn(
+        'Email real desactivado: faltan SMTP_HOST, SMTP_USER o SMTP_PASS. Se guardaran previews HTML en mail-previews.'
+      )
+    }
+
     return null
   }
 
@@ -52,7 +61,7 @@ async function deliverWithNodemailer(message) {
 }
 
 async function savePreview(subject, html, to) {
-  const directory = path.resolve('mail-previews')
+  const directory = path.resolve(process.cwd(), 'mail-previews')
   await fs.mkdir(directory, { recursive: true })
 
   const filename = `${Date.now()}-${subject.toLowerCase().replace(/[^a-z0-9]+/gi, '-')}.html`
